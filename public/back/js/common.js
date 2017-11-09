@@ -40,7 +40,7 @@ $('.btn_logout').on('click',function(){
     $('#logoutModal').modal("show");
 
 
-    $('.btn_confirm').off().on('click',function(){
+    $('#logouModal .btn_confirm').off().on('click',function(){
         $.ajax({
             type:'get',
             url:'/employee/employeeLogout',

@@ -79,19 +79,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>itcast</td>
-                            <td>15102324243</td>
-                            <td>正常</td>
-                            <td>
 
-                                <a data-id="1" data-name="itcast" href="javascript:;" class="btn btn-sm btn-danger">禁用</a>
-
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+                <div class="page" align="right">
+                    <ul class="pagination">
+                        <li class="disabled">
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -125,33 +129,56 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" id="deleteModal">
-        <div class="modal-dialog">
+    <div class="modal fade" tabindex="-1" id="statusModal">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <span >&times;</span>
+                        <span>&times;</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
                 </div>
                 <div class="modal-body">
                     <p class="text-danger">
-                    <span class="glyphicon glyphicon-info-sign"></span>你确定要禁用吗</p>
+                        <span class="glyphicon glyphicon-info-sign"></span>你确定要
+                        <strong></strong>这个用户吗</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-primary btn_confirm">确定</button>
                 </div>
             </div>
         </div>
     </div>
 
 
+    <script type="text/html" id="userData">
+        {{each rows v i}}
+        <tr>
+            <td>{{v.id}}</td>
+            <td>{{v.username}}</td>
+            <td>{{v.mobile}}</td>
+            <td>{{v.isDelete === 1? '正常':'已禁用'}}</td>
+            <td>
+                {{if v.isDelete == 1}}
+                <a data-id="{{v.id}}" data-isDelete="{{v.isDelete}}" data-name='{{v.username}}' href="javascript:;" class="btn btn-sm btn-danger btn_disable">禁用</a>
+                {{/if}} {{if v.isDelete != 1}}
+                <a data-id="{{v.id}}" data-isDelete="{{v.isDelete}}" data-name='{{v.username}}' href="javascript:;" class="btn btn-sm btn-primary">启用</a>
+                {{/if}}
+
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="lib/nprogress/nprogress.js"></script>
+    <script src="lib/template-web.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/user.js"></script>
 </body>
 
 </html>

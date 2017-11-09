@@ -108,3 +108,7 @@ a:link,a:visited,a:hover,a:active{
     font-size: 16px;
 }
 
+
+.table th, .table td {
+    text-align: center;
+}

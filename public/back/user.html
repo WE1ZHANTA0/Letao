@@ -67,11 +67,37 @@
                 </li>
                 <li class="actve">用户管理</li>
             </ol>
+            <div class="ad_content">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th width="10%">序号</th>
+                            <th width="30%">用户名</th>
+                            <th width="30%">手机号</th>
+                            <th width="20%">状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>itcast</td>
+                            <td>15102324243</td>
+                            <td>正常</td>
+                            <td>
+
+                                <a data-id="1" data-name="itcast" href="javascript:;" class="btn btn-sm btn-danger">禁用</a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 
-<!--role aria sr-only: 屏幕阅读器使用-->
+    <!--role aria sr-only: 屏幕阅读器使用-->
     <div class="modal fade" tabindex="-1" id="logoutModal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -82,7 +108,8 @@
                     <h4 class="modal-title">温馨提示</h4>
                 </div>
                 <div class="modal-body">
-                    <p class="text-danger"><span class="glyphicon glyphicon-info-sign"></span>您确定要退出后台管理系统吗？</p>
+                    <p class="text-danger">
+                        <span class="glyphicon glyphicon-info-sign"></span>您确定要退出后台管理系统吗？</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -96,13 +123,35 @@
     <!-- /.modal -->
 
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span >&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">
+                    <span class="glyphicon glyphicon-info-sign"></span>你确定要禁用吗</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <script src="lib/nprogress/nprogress.js"></script>
-    <script src="lib/echarts/echarts.min.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/index.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ $(function () {
     var render = function(){
         getCategoryFirstData({
             page: currPage,
-            pageSize: 10
+            pageSize: 5
         }, function (data) {
             /*渲染页面*/
             $('tbody').html(template('template',data));

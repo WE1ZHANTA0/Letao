@@ -78,7 +78,7 @@ a:link,a:visited,a:hover,a:active{
     border: 3px solid transparent;
 }
 
-.lt_aside .nav a .now{
+.lt_aside .nav a.now{
     border-left-color: #069;
     background-color: #1d1f21;
     color: #fff;

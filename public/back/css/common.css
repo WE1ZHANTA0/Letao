@@ -117,6 +117,10 @@ a:link,a:visited,a:hover,a:active{
     font-size: 16px;
 }
 
+.container-fluid{
+    padding-top: 60px;
+}
+
 
 .table.table-bordered th, .table.table-bordered td {
     text-align: center;
@@ -131,7 +135,10 @@ a:link,a:visited,a:hover,a:active{
     position: relative;
 }
 
-#fileupload{
+
+#fileupload {
+    width: 82px;
+    height: 34px;
     position: absolute;
     top: 0;
     left: 0;

@@ -84,16 +84,6 @@
                 </table>
                 <div class="page" align="right">
                     <ul class="pagination">
-                        <li class="disabled">
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="#">1
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -155,7 +145,7 @@
     <script type="text/html" id="userData">
         {{each rows v i}}
         <tr>
-            <td>{{v.id}}</td>
+            <td>{{(page-1)*size+i+1}}</td>
             <td>{{v.username}}</td>
             <td>{{v.mobile}}</td>
             <td>{{v.isDelete === 1? '正常':'已禁用'}}</td>

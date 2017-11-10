@@ -31,6 +31,7 @@ $('.child').prev().on('click',function(){
 $('.btn_menu').on('click',function(){
     $('.lt_aside').toggleClass('now');
     $('.lt_main').toggleClass('now');
+    $('.lt_main .topbar').toggleClass('now');
 });
 
 

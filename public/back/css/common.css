@@ -31,8 +31,9 @@ a:link,a:visited,a:hover,a:active{
     width: 180px;
     height: 100%;
     background-color: #222d32;
-    position: absolute;
+    position: fixed;
     left: 0;
+    z-index: 999;
 }
 .lt_aside.now{
     left: -180px;
@@ -102,6 +103,14 @@ a:link,a:visited,a:hover,a:active{
     padding: 0 20px;
     line-height: 50px;
     margin-bottom: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-left: 200px;
+}
+.lt_main .topbar.now{
+    padding-left: 20px;
 }
 .lt_main .topbar a{
     color: #fff;
@@ -116,4 +125,15 @@ a:link,a:visited,a:hover,a:active{
 
 #addBtn{
     margin-bottom: 15px;
+}
+
+.upload_box{
+    position: relative;
+}
+
+#fileupload{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
 }

@@ -1,33 +1,33 @@
-$(function(){
+$(function () {
 
     var currentPage = 1;
 
 
 
-    var render = function(){
+    var render = function () {
         $.ajax({
-            type:'get',
-            url:'/product/queryProductDetailList',
-            data:{
-                page:currentPage,
-                pageSize:5
+            type: 'get',
+            url: '/product/queryProductDetailList',
+            data: {
+                page: currentPage,
+                pageSize: 5
             },
-            success:function(data){
+            success: function (data) {
                 // console.log(data);
-                $('tbody').html(template('listData',data));
+                $('tbody').html(template('listData', data));
 
 
                 $("#pagintor").bootstrapPaginator({
-                    bootstrapMajorVersion:3,//默认是2，如果是bootstrap3版本，这个参数必填
-                    currentPage:currentPage,//当前页
-                    totalPages:Math.ceil(data.total/data.size),//总页数
-                    size:"small",//设置控件的大小，mini, small, normal,large
-                    onPageClicked:function(event, originalEvent, type,page){
-                      //为按钮绑定点击事件 page:当前点击的按钮值
-                      currentPage = page;
-                      render();
+                    bootstrapMajorVersion: 3, //默认是2，如果是bootstrap3版本，这个参数必填
+                    currentPage: currentPage, //当前页
+                    totalPages: Math.ceil(data.total / data.size), //总页数
+                    size: "small", //设置控件的大小，mini, small, normal,large
+                    onPageClicked: function (event, originalEvent, type, page) {
+                        //为按钮绑定点击事件 page:当前点击的按钮值
+                        currentPage = page;
+                        render();
                     }
-                  });
+                });
 
 
 
@@ -38,13 +38,43 @@ $(function(){
     render();
 
 
-    $('#addBtn').on('click',function(){
+    $('#addBtn').on('click', function () {
         $('#addModal').modal('show');
     })
 
+    $.ajax({
+        type: 'get',
+        url: '/category/querySecondCategoryPaging',
+        data: {
+            page: 1,
+            pageSize: 100
+        },
+        success: function (data) {
+            $('.dropdown-menu').html(template('tpl2', data));
+        }
+    })
+
+    $(".dropdown-menu").on("click", "a", function () {
+        
+            //获取当前a的内容，赋值给dropdown-text
+            $(".dropdown-text").text($(this).text());
+        
+            //获取到当前a的id，赋值给隐藏域 brandId
+            $("#brandId").val($(this).data("id"));
+        
+            //手动设置brandId为valid
+            $('#form').data("bootstrapValidator").updateStatus("brandId", "VALID");
+        
+          });
+
+
+
     $.fn.bootstrapValidator.validators.checkPic = {
-        validate:function(validate,$field,options){
-            if(picList.length !=3) return {valid: false, message: '请上传三张图片'};
+        validate: function (validate, $field, options) {
+            if (picList.length != 3) return {
+                valid: false,
+                message: '请上传三张图片'
+            };
             return true;
         }
     }
@@ -57,69 +87,76 @@ $(function(){
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        fields:{
-            proName:{
-                validators:{
-                    notEmpty:{
-                        message:'请输入商品名称'
+        fields: {
+            brandId: {
+                validators: {
+                    notEmpty: {
+                        message: "请选择二级分类"
                     }
                 }
             },
-            proDesc:{
-                validators:{
-                    notEmpty:{
-                        message:'请输入商品描述'
+            proName: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入商品名称'
                     }
                 }
             },
-            num:{
-                validators:{
-                    notEmpty:{
-                        message:'请输入商品库存'
+            proDesc: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入商品描述'
                     }
                 }
             },
-            price:{
-                validators:{
-                    notEmpty:{
-                        message:'请输入商品价格'
+            num: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入商品库存'
                     }
                 }
             },
-            oldPrice:{
-                validators:{
-                    notEmpty:{
-                        message:'请输入商品原价'
+            price: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入商品价格'
                     }
                 }
             },
-            size:{
+            oldPrice: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入商品原价'
+                    }
+                }
+            },
+            size: {
                 validators: {
                     notEmpty: {
                         message: '请输入商品尺码'
                     }
                 }
             },
-            pic:{
+            pic: {
                 validators: {
-                    checkPic:{}
+                    checkPic: {}
                 }
             }
         }
-    }).on('success.form.bv',function(e){
+    }).on('success.form.bv', function (e) {
         e.preventDefault();
         var data = $('#form').serialize();
 
-        $.each(picList,function(i,e){
-            data += '&picName'+(i+1)+'='+e.picName+'&picAddr'+(i+1)+'='+e.picAddr;
+        $.each(picList, function (i, e) {
+            data += '&picName' + (i + 1) + '=' + e.picName + '&picAddr' + (i + 1) + '=' + e.picAddr;
         });
         $.ajax({
-            type:'post',
-            url:'/product/addProduct',
-            data:data,
-            dataType:'json',
-            success:function(data){
-                if(data.success){
+            type: 'post',
+            url: '/product/addProduct',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
                     $('#addModal').modal('hide');
                     currentPage = 1;
                     render();
@@ -137,7 +174,7 @@ $(function(){
 
 
 
-    
+
 
 
 
@@ -147,20 +184,20 @@ $(function(){
 
     var picList = [];
     $("#fileupload").fileupload({
-        dataType:"json",
+        dataType: "json",
         //e：事件对象
         //data：图片上传后的对象，通过e.result.picAddr可以获取上传后的图片地址
-        done:function (e, data) {
-          console.log(data);
-          if(picList.length<3){
-              console.log('haha');
-              $(this).parent().parent().next().append('<img width="100" height="100" src="'+data.result.picAddr+'"/> ');
-              picList.push(data.result);
-              if(picList.length == 3){
-                  $('#form').data('bootstrapValidator').updateStatus('pic','VALID');
-              }
-          }
+        done: function (e, data) {
+            console.log(data);
+            if (picList.length < 3) {
+                console.log('haha');
+                $(this).parent().parent().next().append('<img width="100" height="100" src="' + data.result.picAddr + '"/> ');
+                picList.push(data.result);
+                if (picList.length == 3) {
+                    $('#form').data('bootstrapValidator').updateStatus('pic', 'VALID');
+                }
+            }
         }
-      });
+    });
 
 })

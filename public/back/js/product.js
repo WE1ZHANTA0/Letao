@@ -137,6 +137,7 @@ $(function(){
 
 
 
+    
 
 
 
@@ -156,7 +157,7 @@ $(function(){
               $(this).parent().parent().next().append('<img width="100" height="100" src="'+data.result.picAddr+'"/> ');
               picList.push(data.result);
               if(picList.length == 3){
-                //   $('#form').data('bootstrapValidator').updateStatus('pic','VALID');
+                  $('#form').data('bootstrapValidator').updateStatus('pic','VALID');
               }
           }
         }

@@ -104,3 +104,26 @@ img{
 .lt_footer li.now p{
     color: darkorange;
 }
+
+
+.lt_product{
+    padding: 10px;
+}
+.lt_product .item{
+    border: 1px solid #ccc;
+    width: 48%;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.lt_product .item:nth-child(odd){
+    margin-right: 4%;
+}
+.lt_product .item .price{
+    color: red;
+}
+.lt_product .item .oldPrice{
+    text-decoration: line-through;
+}

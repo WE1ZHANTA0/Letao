@@ -33,7 +33,7 @@ var tools = {
     },
     checkLogin:function(data){
         if(data.error === 400){
-            location.href = 'login.html?reUrl='+location.href;
+            location.href = 'login.html?retUrl='+location.href;
         }
     }
 }

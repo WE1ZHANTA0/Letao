@@ -58,7 +58,7 @@ $(function () {
                 console.log(data);
                 tools.checkLogin(data);
                 if(data.success){
-                    mui.comfirm('添加成功','温馨提示',['去购物车','继续逛逛'],function(e){
+                    mui.confirm('添加成功','温馨提示',['去购物车','继续逛逛'],function(e){
                         if(e.index ==0){
                             location.href = 'cart.html';
                         }

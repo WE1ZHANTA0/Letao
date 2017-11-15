@@ -24,30 +24,32 @@ $(function () {
 
                 // 删除功能
                 // 给删除按钮注册事件  获取当前购物车id 发送ajax
-                var btn = document.querySelector('.btn_delete');
-                btn.addEventListener("touchend", function () {
-                  // console.log("tap event trigger");
-                  var id = $(this).data('id');
-                  console.log(1111);
-                  mui.confirm('你确定要删除吗', '温馨提示', ['是', '否'], function (e) {
-                    // mui.closePopups();
-                    if (e.index === 0) {
-                      $.ajax({
-                        url: '/cart/deleteCart',
-                        data: {
-                          id: id
-                        },
-                        success: function (data) {
-                          if (data.success) {
-                            mui('.mui-scroll-wrapper').pullRefresh().pulldownLoading();
+                var btn = document.querySelectorAll('.btn_delete');
+                for(var j=0;j<btn.length;j++){
+                  btn[j].addEventListener("touchend", function () {
+                    // console.log("tap event trigger");
+                    var id = $(this).data('id');
+                    console.log(1111);
+                    mui.confirm('你确定要删除吗', '温馨提示', ['是', '否'], function (e) {
+                      // mui.closePopups();
+                      if (e.index === 0) {
+                        $.ajax({
+                          url: '/cart/deleteCart',
+                          data: {
+                            id: id
+                          },
+                          success: function (data) {
+                            if (data.success) {
+                              mui('.mui-scroll-wrapper').pullRefresh().pulldownLoading();
+                            }
                           }
-                        }
-                      })
-                    }
-                  })
-
-
-                });
+                        })
+                      }
+                    })
+  
+  
+                  });
+                }
 
 
 
@@ -55,7 +57,7 @@ $(function () {
                 // 编辑功能
                 var edit = document.querySelectorAll('.btn_edit');
                 console.log(edit);
-                for (var i = 0; i < edit.length - 1; i++) {
+                for (var i = 0; i < edit.length; i++) {
                   edit[i].addEventListener('touchend', function () {
                     var data = this.dataset;
                     console.log(data);

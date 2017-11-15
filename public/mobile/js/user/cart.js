@@ -57,6 +57,7 @@ $(function(){
         /*3.2 动态渲染*/
         /*3.3 获取数据 {id: "1", size: "50", productsize: "42-50", num: "50", productnum: "5"}*/
         var data = this.dataset;
+		console.log(data);
         mui.confirm(template('edit',data).replace(/\n/g,''), '编辑商品', ['确定','取消'], function(e) {
             if (e.index == 0) {
                 /*2.2 确定之后 发送请求*/

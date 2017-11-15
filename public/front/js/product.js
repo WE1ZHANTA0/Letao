@@ -12,14 +12,18 @@ $(function () {
             console.log(data);
             $('.mui-scroll').html(template('productData', data));
 
+
+            //   手动初始化数字搜索框
+            //手动初始化数字框
+            // mui(".mui-numbox").numbox();
+            mui('.mui-numbox').numbox().setOption('step',1);
+
             // 渲染后从新初始化轮播图
             mui(".mui-slider").slider({
                 interval: 1000
             });
 
-            //   手动初始化数字搜索框
-            //手动初始化数字框
-            mui(".mui-numbox").numbox();
+            
 
             // 注册选择尺码的事件
             $('.lt_size span').off().on('click',function(){

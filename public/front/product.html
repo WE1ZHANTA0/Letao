@@ -35,7 +35,7 @@
             <div class="mui-scroll-wrapper">
                 <div class="mui-scroll">
                     <!--这里放置真实显示的DOM内容-->
-                    
+
 
 
                 </div>
@@ -106,14 +106,14 @@
                 var temp = size.split('-');
                 for(var i = temp[0];i<=temp[1];i++){
             %>
-            <span class="">{{i}}</span>
-            <% } %>
+                <span class="">{{i}}</span>
+                <% } %>
         </div>
 
         <!-- 库存 -->
         <div class="lt_num">
             库存:
-            <div class="mui-numbox" data-numbox-min="1" data-numbox-max='{{num}}'>
+            <div class="mui-numbox" data-numbox-min="1" data-numbox-max='{{num}}' data-numbox-step='1'>
                 <!-- "-"按钮，点击可减小当前数值 -->
                 <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
                 <input class="mui-numbox-input" type="number" value="1" />
@@ -133,9 +133,9 @@
 
 
 
-
-    <script src="lib/mui/js/mui.min.js"></script>
     <script src="lib/zepto/zepto.min.js"></script>
+    <script src="lib/mui/js/mui.min.js"></script>
+
     <script src="lib/template-web.js"></script>
     <script src="js/common.js"></script>
     <script src="js/product.js"></script>
